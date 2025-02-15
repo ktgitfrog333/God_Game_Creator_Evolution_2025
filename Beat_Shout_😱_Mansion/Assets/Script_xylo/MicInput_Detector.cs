@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; // スライダーを使用
 using CriWare;
 using System.Collections;
 
@@ -11,6 +12,7 @@ public class MicInput_Criware : MonoBehaviour
 
     public float[] volumeThresholds = new float[4]; // 声量評価用の閾値
     public TextMeshProUGUI text; // 音量表示用のTextMeshPro
+    public Slider volumeSlider; // 音量ゲージ用のスライダー
 
     private CriAtomExMic mic; // CRIWAREのマイク入力
     private float volumeAccumulation = 0f; // 音量合計
@@ -20,6 +22,14 @@ public class MicInput_Criware : MonoBehaviour
     void Start()
     {
         StartCoroutine(InitializeMicrophoneWithDelay());
+
+        // スライダーの範囲を設定
+        if (volumeSlider != null)
+        {
+            volumeSlider.minValue = 0f; // 最小値
+            volumeSlider.maxValue = 2f; // 音量が1を超える可能性を考慮して2に設定
+            volumeSlider.value = 0f;
+        }
     }
 
     private IEnumerator InitializeMicrophoneWithDelay()
@@ -83,7 +93,12 @@ public class MicInput_Criware : MonoBehaviour
         if (samplesRead > 0)
         {
             float volume = CalculateRMS(micBuffer, (int)samplesRead);
-            text.text = $"Vol: {volume:F2}";
+
+            // 音量をスライダーとテキストに反映
+            if (text != null)
+                text.text = $"Vol: {volume:F2}";
+            if (volumeSlider != null)
+                volumeSlider.value = volume; // スライダーに反映
 
             if (volume > startThreshold)
             {
