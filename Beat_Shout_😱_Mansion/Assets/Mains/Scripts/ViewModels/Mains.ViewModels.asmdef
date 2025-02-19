@@ -1,0 +1,17 @@
+{
+    "name": "Mains.ViewModels",
+    "rootNamespace": "",
+    "references": [
+        "GUID:899d3f479e2bb7744a2792a11cbc40b9",
+        "GUID:bca37bd24b4e9ce4688064ef3da8977d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

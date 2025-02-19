@@ -1,0 +1,16 @@
+{
+    "name": "Mains.Models",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bca37bd24b4e9ce4688064ef3da8977d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
