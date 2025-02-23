@@ -79,5 +79,34 @@ namespace Mains.External
                 Debug.LogWarning("StopFootsteps メソッドが見つかりません。");
             }
         }
+
+        /// <summary>
+        /// 足音を再生
+        /// </summary>
+        public void PlayFootStep()
+        {
+            if (_test_FootStep == null)
+            {
+                Debug.LogWarning("Test_FootStep インスタンスが見つかりません。");
+                return;
+            }
+            if (SE_Picker.Instance == null)
+            {
+                return;
+            }
+
+            // Test_FootStep クラスの PlayFootStep メソッドを取得
+            MethodInfo methodInfo = _test_FootStep.GetType().GetMethod("PlayFootStep", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            if (methodInfo != null)
+            {
+                // メソッドを実行
+                methodInfo.Invoke(_test_FootStep, null);
+            }
+            else
+            {
+                Debug.LogWarning("PlayFootStep メソッドが見つかりません。");
+            }
+        }
     }
 }
